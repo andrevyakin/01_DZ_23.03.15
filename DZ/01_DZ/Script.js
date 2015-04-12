@@ -176,8 +176,8 @@ function Run3()
                     document.write('Прямоугольник: "' + i + '"' + "<br>");
                     for (var j in MyRectangle4[i])
                         document.write (j + " = " + MyRectangle4[i][j] + "<br>");
-                }
                     res = true;
+                }
             }
         if (!res)
             document.write("Прямоугольник с таким названием не найден" + "<br>");

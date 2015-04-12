@@ -53,7 +53,7 @@ function Run()
 
 }
 
-// или так:
+// или так (Вариант 2):
 
 //Объект "Прямоугольник"
 var MyRectangle1 = {
@@ -66,7 +66,7 @@ var MyRectangle1 = {
         this.xb = xb;
         this.yb = yb;
 
-       return this;
+        return this;
     },
 
     //методы
@@ -104,7 +104,7 @@ function Run1()
 
 }
 
-// или так:
+// или так (Вариант 3):
 function Run2()
 {
     var MyRectangle3 = new Array();
@@ -138,13 +138,56 @@ function Run2()
     }
 
     Constructor();
+    Constructor();
 
     var key = prompt ("Введите название прямоугольника, или -1 чтобы показать все прямоугольники", "");
     Show (key);
 }
 
+//или так (Вариант 4)
 
+function Run3()
+{
+    var MyRectangle4 = new Array ();
 
+    function Create() {
+        var rectangle = prompt("Введите название (идентификатор) прямоугольника.", "");
+        var xh = prompt("Введите координаты Х верхнего левого угла.", "");
+        var yh = prompt("Введите координаты Y верхнего левого угла.", "");
+        var xb = prompt("Введите координаты Х нижнего правого угла.", "");
+        var yb = prompt("Введите координаты Y нижнего правого угла.", "");
+
+        MyRectangle4[rectangle] = {X1: xh , Y1: yh, X2: xb, Y2: yb};
+    }
+
+    function Show(key) {
+        var res = false;
+        if (key == -1) {
+            for (var i in MyRectangle4) {
+                document.write('Прямоугольник: "' + i + '"' + "<br>");
+                for (var j in MyRectangle4[i])
+                    document.write (j + " = " + MyRectangle4[i][j] + "<br>");
+            }
+            res = true;
+        }
+        else
+            for (var i in MyRectangle4){
+                if (i == key) {
+                    document.write('Прямоугольник: "' + i + '"' + "<br>");
+                    for (var j in MyRectangle4[i])
+                        document.write (j + " = " + MyRectangle4[i][j] + "<br>");
+                }
+                    res = true;
+            }
+        if (!res)
+            document.write("Прямоугольник с таким названием не найден" + "<br>");
+    }
+    Create();
+    Create();
+
+    var key = prompt ("Введите название прямоугольника, или -1 чтобы показать все прямоугольники", "");
+    Show (key);
+ }
 
 
 

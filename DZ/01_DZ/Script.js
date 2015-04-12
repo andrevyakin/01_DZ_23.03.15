@@ -29,8 +29,8 @@ function MyRectangle (rectangle, xh, yh, xb, yb)
 
     function Show ()
     {
-        document.write("Прямоугольник: " + rectangle + "<br/>");
-        document.write("Координаты: " + xh + ", " + yh + ", " + xb + ", " + yb + "." + "<br/>");
+        document.write("Прямоугольник: " + rectangle + "<br>");
+        document.write("Координаты: " + xh + ", " + yh + ", " + xb + ", " + yb + "." + "<br>");
     }
 }
 
@@ -58,7 +58,7 @@ function Run()
 //Объект "Прямоугольник"
 var MyRectangle1 = {
 
-    constructor: function Constructor  (rectangle, xh, yh, xb, yb) {
+    constructor: function (rectangle, xh, yh, xb, yb) {
         //свойства
         this.rectangle = rectangle;
         this.xh = xh;
@@ -82,8 +82,8 @@ var MyRectangle1 = {
 
     Show: function ()
     {
-        document.write("Прямоугольник: " + this.rectangle + "<br/>");
-        document.write("Координаты: " + this.xh + ", " + this.yh + ", " + this.xb + ", " + this.yb + "." + "<br/>");
+        document.write("Прямоугольник: " + this.rectangle + "<br>");
+        document.write("Координаты: " + this.xh + ", " + this.yh + ", " + this.xb + ", " + this.yb + "." + "<br>");
     }
 };
 
@@ -103,6 +103,46 @@ function Run1()
     mas[0].Show();
 
 }
+
+// или так:
+function Run2()
+{
+    var MyRectangle3 = new Array();
+
+    function Constructor()
+    {
+        var rectangle = prompt("Введите название (идентификатор) прямоугольника.", "");
+        var xh = prompt( "Введите координаты Х верхнего левого угла.", "");
+        var yh = prompt( "Введите координаты Y верхнего левого угла.", "");
+        var xb = prompt( "Введите координаты Х нижнего правого угла.", "");
+        var yb = prompt( "Введите координаты Y нижнего правого угла.", "");
+
+        MyRectangle3 [rectangle] = new Array (xh, yh, xb, yb);
+    }
+
+    function Show(key) {
+        var res = false;
+        if (key == -1) {
+            for (var i in MyRectangle3)
+                 document.write('Прямоугольник: "' + i + ':" ' + MyRectangle3[i] + "<br>");
+            res = true;
+        }
+        else
+            for (var i in MyRectangle3)
+                if (i == key) {
+                    document.write('Прямоугольник: "' + i + ':" ' + MyRectangle3[i] + "<br>");
+                    res = true;
+                }
+        if (!res)
+            document.write ("Прямоугольник с таким названием не найден" + "<br>");
+    }
+
+    Constructor();
+
+    var key = prompt ("Введите название прямоугольника, или -1 чтобы показать все прямоугольники", "");
+    Show (key);
+}
+
 
 
 
